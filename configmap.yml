@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ma-configmap
+data:
+  username: "vadym"
+  courses: "masteracademy"
+  users.list: |
+    user1=pavlo
+    user2=sviat
+    user3=vadym

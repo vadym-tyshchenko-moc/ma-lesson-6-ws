@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ma-pod
+  namespace: default
+  labels:
+    app: pod
+spec:
+  containers:
+  - name: myapp-3
+    image: busybox:1.28
+    command: ['sh', '-c', "sleep 3600 && exit 0"]
+    volumeMounts:
+      - name: configmap-volume
+        mountPath: /configmap-volume
+  volumes:
+    - name: configmap-volume
+      configMap:
+        name: ma-configmap
+        items:
+        - key: users.list
+          path: userslist
+  restartPolicy: Never
